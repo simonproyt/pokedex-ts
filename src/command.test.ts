@@ -2,6 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 import type { Interface } from "node:readline";
 import { getCommands } from "./command.js";
 import { commandHelp } from "./command_help.js";
+import { PokeAPI } from "./pokeapi.js";
 import type { State } from "./state.js";
 
 describe("command registry", () => {
@@ -16,15 +17,18 @@ describe("command registry", () => {
 });
 
 describe("commandHelp", () => {
-  test("prints help text for every registered command", () => {
+  test("prints help text for every registered command", async () => {
     const commands = getCommands();
     const state: State = {
       rl: {} as Interface,
+      pokeapi: new PokeAPI(),
+      nextLocationsURL: undefined,
+      prevLocationsURL: undefined,
       commands,
     };
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-    commandHelp(state);
+    await commandHelp(state);
 
     expect(logSpy).toHaveBeenCalledWith("Welcome to the Pokedex!");
     expect(logSpy).toHaveBeenCalledWith("Usage:");
