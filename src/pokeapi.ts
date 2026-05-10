@@ -41,6 +41,23 @@ export class PokeAPI {
     this.cache.add(url, data);
     return data;
   }
+
+  async fetchPokemon(pokemonName: string): Promise<Pokemon> {
+    const url = `${PokeAPI.baseURL}/pokemon/${pokemonName}`;
+    const cached = this.cache.get<Pokemon>(url);
+    if (cached) {
+      return cached;
+    }
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch pokemon ${pokemonName}: ${response.status} ${response.statusText}`);
+    }
+
+    const data = (await response.json()) as Pokemon;
+    this.cache.add(url, data);
+    return data;
+  }
 }
 
 export type NamedAPIResource = {
@@ -74,4 +91,13 @@ export type Location = {
   names: LanguageName[];
   pokemon_encounters: LocationEncounter[];
   region: NamedAPIResource | null;
+};
+
+export type Pokemon = {
+  id: number;
+  name: string;
+  base_experience: number;
+  height: number;
+  weight: number;
+  types: { slot: number; type: NamedAPIResource }[];
 };

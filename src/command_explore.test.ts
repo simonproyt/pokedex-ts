@@ -23,6 +23,7 @@ describe("commandExplore", () => {
       rl: {} as any,
       commands: {},
       pokeapi: { fetchLocation: vi.fn(async () => location) } as any,
+      pokedex: {},
       nextLocationsURL: undefined,
       prevLocationsURL: undefined,
     };
