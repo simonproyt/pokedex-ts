@@ -1,6 +1,8 @@
 import { describe, expect, test, vi } from "vitest";
+import type { Interface } from "node:readline";
 import { getCommands } from "./command.js";
 import { commandHelp } from "./command_help.js";
+import type { State } from "./state.js";
 
 describe("command registry", () => {
   test("registers help and exit commands", () => {
@@ -16,9 +18,13 @@ describe("command registry", () => {
 describe("commandHelp", () => {
   test("prints help text for every registered command", () => {
     const commands = getCommands();
+    const state: State = {
+      rl: {} as Interface,
+      commands,
+    };
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 
-    commandHelp(commands);
+    commandHelp(state);
 
     expect(logSpy).toHaveBeenCalledWith("Welcome to the Pokedex!");
     expect(logSpy).toHaveBeenCalledWith("Usage:");
