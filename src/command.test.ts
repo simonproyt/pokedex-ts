@@ -13,10 +13,12 @@ describe("command registry", () => {
     expect(commands.exit).toBeDefined();
     expect(commands.explore).toBeDefined();
     expect(commands.catch).toBeDefined();
+    expect(commands.inspect).toBeDefined();
     expect(commands.help.description).toBe("Displays a help message");
     expect(commands.exit.description).toBe("Exit the Pokedex");
     expect(commands.explore.description).toBe("Explore a location area");
     expect(commands.catch.description).toBe("Catch a Pokemon");
+    expect(commands.inspect.description).toBe("Inspect a caught Pokemon");
   });
 });
 

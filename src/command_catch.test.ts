@@ -11,6 +11,14 @@ describe("commandCatch", () => {
       base_experience: 63,
       height: 5,
       weight: 90,
+      stats: [
+        { base_stat: 48, stat: { name: "hp", url: "" } },
+        { base_stat: 65, stat: { name: "attack", url: "" } },
+        { base_stat: 64, stat: { name: "defense", url: "" } },
+        { base_stat: 50, stat: { name: "special-attack", url: "" } },
+        { base_stat: 50, stat: { name: "special-defense", url: "" } },
+        { base_stat: 43, stat: { name: "speed", url: "" } },
+      ],
       types: [{ slot: 1, type: { name: "water", url: "" } }],
     };
 
@@ -43,6 +51,14 @@ describe("commandCatch", () => {
       base_experience: 112,
       height: 4,
       weight: 60,
+      stats: [
+        { base_stat: 35, stat: { name: "hp", url: "" } },
+        { base_stat: 55, stat: { name: "attack", url: "" } },
+        { base_stat: 40, stat: { name: "defense", url: "" } },
+        { base_stat: 50, stat: { name: "special-attack", url: "" } },
+        { base_stat: 50, stat: { name: "special-defense", url: "" } },
+        { base_stat: 90, stat: { name: "speed", url: "" } },
+      ],
       types: [{ slot: 1, type: { name: "electric", url: "" } }],
     };
 
