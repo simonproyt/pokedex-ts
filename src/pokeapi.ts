@@ -60,6 +60,11 @@ export type ShallowLocations = {
   results: NamedAPIResource[];
 };
 
+export type LocationEncounter = {
+  pokemon: NamedAPIResource;
+  version_details: unknown[];
+};
+
 export type Location = {
   id: number;
   name: string;
@@ -67,6 +72,6 @@ export type Location = {
   encounter_method_rates: unknown[];
   location: NamedAPIResource;
   names: LanguageName[];
-  pokemon_encounters: unknown[];
+  pokemon_encounters: LocationEncounter[];
   region: NamedAPIResource | null;
 };
